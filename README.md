@@ -78,12 +78,11 @@ python predict.py --image path_to_your_image.jpg
 
 | Metric    | Value |
 | --------- | ----- |
-| Accuracy  | 92.5% |
-| Precision | 91.8% |
-| Recall    | 93.2% |
-| F1-Score  | 92.5% |
+| Accuracy  | 64.93% |
+| Precision | 65% |
+| Recall    | 65% |
+| F1-Score  | 65% |
 
-> *(These are example results — replace them with your actual evaluation metrics.)*
 
 ## 🙋‍♂️ Author
 
