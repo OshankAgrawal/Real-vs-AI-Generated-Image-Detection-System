@@ -86,7 +86,7 @@ if uploaded_file:
         # Simulate a progress bar (like your JS version)
         progress = st.progress(0)
         for i in range(1, 101):
-            time.sleep(0.01)
+            time.sleep(0.001)
             progress.progress(i)
 
     st.success(f"**Result**: {result}")
