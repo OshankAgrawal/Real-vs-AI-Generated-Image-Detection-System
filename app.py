@@ -3,6 +3,7 @@ from PIL import Image
 import numpy as np
 import tensorflow as tf
 import time
+import gdown
 
 @st.cache_resource
 def load_model():
@@ -11,14 +12,14 @@ def load_model():
 
     file_url = "https://drive.google.com/uc?export=download&id=14K8dRaJBR01z1RSonNh7xCt4ghrp360l"  # file URL
     file_name = "Rebuild-model.h5"
+    gdown.download(file_url, file_name, quiet=False)
 
-    # If file not present locally, download it
-    if not os.path.exists(file_name):
-        with st.spinner("Downloading model file..."):
-            with requests.get(file_url, stream=True) as r:
-                with open(file_name, 'wb') as f:
-                    for chunk in r.iter_content(chunk_size=8192):
-                        f.write(chunk)
+    # Check file size and type before loading
+    if os.path.exists(file_name):
+        # st.write("Downloaded file size:", os.path.getsize(file_name), "bytes")
+        with open(file_name, "rb") as f:
+            signature = f.read(8)
+            # st.write("File signature (first 8 bytes):", signature)
 
     model = tf.keras.models.load_model(file_name)
     return model
